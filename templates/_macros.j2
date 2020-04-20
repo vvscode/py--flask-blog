@@ -1,0 +1,21 @@
+{% macro post_card(post) -%}
+<div class="row">
+    <div class="col-12 m-2">
+        <div class="col-3">
+            <img src="{{ post.picture }}" class="rounded float-left mr-5">
+        </div>
+        <div class="col-9">
+            <a href="{{ url_for('post', post_id=post.post_id) }}" class="h5">{{ post.title }}<a>
+            <p>{{ post.short }}</p>
+        </div>
+    </div>
+</div>
+{%- endmacro %}
+
+{% macro field_errors(field) %}
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <div class="invalid-feedback" style="display:block;">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+{%- endmacro %}
